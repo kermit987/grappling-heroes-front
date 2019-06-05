@@ -13,20 +13,15 @@ const styles = theme => ({
 });
 
 class OutlinedButtons extends React.Component {
-  onSubmit = () => {
-    alert('In the onSubmit function')
-  }
-
   render() {
-    const { classes } = this.props
+    const { classes, onClick } = this.props
     return (
       <div>
-        <Button variant="outlined" color="primary" className={classes.button} onClick={this.onSubmit}>
+        <Button variant="outlined" color="primary" className={classes.button} onClick={onClick}>
           Connexion
           </Button>
       </div>
     );
-
   }
 }
 

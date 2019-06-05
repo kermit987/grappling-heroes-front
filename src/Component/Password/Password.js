@@ -22,17 +22,8 @@ const styles = theme => ({
 
 
 class OutlinedTextFields extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { value: '' }
-  }
-
-  handleChange = (event) => {
-    this.setState({ value: event.target.value })
-  }
-
   render() {
-    const { classes } = this.props;
+    const { classes, value, onChange } = this.props;
 
     return (
       <form className={classes.container} noValidate autoComplete="off">
@@ -44,8 +35,8 @@ class OutlinedTextFields extends React.Component {
           autoComplete="current-password"
           margin="normal"
           variant="outlined"
-          value={this.state.value}
-          onChange={this.handleChange}
+          value={value}
+          onChange={onChange}
         />
       </form>
     );
