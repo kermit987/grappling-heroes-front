@@ -41,19 +41,23 @@ class MediaCard extends React.Component {
 
     console.log('in the submitButton ');
 
-    const result = axios.post('http://localhost:3000/login', user, {
+    const result = await axios.post('http://localhost:3001/login', user, {
       headers: {
         'Content-Type': 'application/json'
       }
     });
     console.log('value of result ', result);
+    if (result.status === 200) {
+      this.props.history.push('Private');
+      // return <Redirect to="/Private" />;
+    }
   };
 
   render() {
     return (
       <Card>
-        <CardContent className='cardLoginPassword'>
-          <h1 className='signIn'>Sign In</h1>
+        <CardContent className="cardLoginPassword">
+          <h1 className="signIn">Sign In</h1>
           <Login
             value={this.state.username}
             onChange={this.handleUsernameChange}
