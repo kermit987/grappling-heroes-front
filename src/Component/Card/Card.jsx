@@ -41,15 +41,18 @@ class MediaCard extends React.Component {
 
     console.log('in the submitButton ');
 
-    const result = await axios.post('http://localhost:3001/login', user, {
-      headers: {
-        'Content-Type': 'application/json'
+    const result = await axios.post(
+      'https://floating-hamlet-32385.herokuapp.com/login',
+      user,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       }
-    });
+    );
     console.log('value of result ', result);
     if (result.status === 200) {
-      this.props.history.push('Private');
-      // return <Redirect to="/Private" />;
+      this.props.history.push('ListFighter');
     }
   };
 

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import AddFighter from 'Component/Fighter/AddFighter';
 
-export default class Private extends Component {
+export default class ListFighter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fighter: ['tmp']
+      fighter: ['tmp'],
+      refresh: false
     };
   }
 
@@ -25,6 +27,10 @@ export default class Private extends Component {
     }
   };
 
+  updateListFighter = () => {
+    this.fetchFighter();
+  };
+
   componentDidMount() {
     this.fetchFighter();
   }
@@ -38,8 +44,8 @@ export default class Private extends Component {
 
     return (
       <div>
-        <h1>Private access</h1>
         <ul>{fighters}</ul>
+        <AddFighter updateListFighter={this.fetchFighter} />
       </div>
     );
   }
