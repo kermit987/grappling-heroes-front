@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import AddFighter from 'Component/Fighter/AddFighter';
 
 export default class ListFighter extends Component {
@@ -35,10 +36,12 @@ export default class ListFighter extends Component {
     this.fetchFighter();
   }
 
+  //how to use <Link> without putting it in browser route
   render() {
     const fighters = this.state.fighter.map(fighter => (
       <li key="1">
-        {fighter.name} {fighter.birth}
+        <Link to="/ProfileFighter">{fighter.name}</Link>
+        {fighter.birth}
       </li>
     ));
 

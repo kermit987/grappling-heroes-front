@@ -52,7 +52,7 @@ class MediaCard extends React.Component {
     );
     console.log('value of result ', result);
     if (result.status === 200) {
-      this.props.history.push('ListFighter');
+      this.props.history.push('LandingPage');
     }
   };
 
