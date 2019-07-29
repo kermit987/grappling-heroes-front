@@ -8,6 +8,8 @@ export default class LandingPage extends React.Component {
         <Link to="/ListFighter">ListFighter</Link>
         <br />
         <Link to="/Diet">Diet</Link>
+        <br />
+        <Link to="/Profile">Profile</Link>
       </div>
     );
   }

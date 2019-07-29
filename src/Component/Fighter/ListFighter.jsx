@@ -40,7 +40,18 @@ export default class ListFighter extends Component {
   render() {
     const fighters = this.state.fighter.map(fighter => (
       <li key="1">
-        <Link to="/ProfileFighter">{fighter.name}</Link>
+        <Link
+          to={{
+            pathname: '/ProfileFighter',
+            state: {
+              name: fighter.name,
+              birth: fighter.birth,
+              bio: fighter.bio
+            }
+          }}
+        >
+          {fighter.name}
+        </Link>
         {fighter.birth}
       </li>
     ));
