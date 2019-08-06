@@ -45,6 +45,7 @@ class Profile extends Component {
       )
 
       for (let key in result.data) this.setState({ [key]: result.data[key] })
+      this.props.updateName('EPITECH')
     } catch (e) {
       console.log('Error Profile component ', e)
     }
@@ -127,4 +128,13 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Profile)
+const mapDispatchToProps = dispatch => {
+  return {
+    updateName: newName => dispatch({ type: 'UPDATE_NAME', payload: newName })
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Profile)

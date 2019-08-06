@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux'
 import {
   UPDATE_NAME,
   UPDATE_LASTNAME,
@@ -57,4 +58,8 @@ function profile(state = initialState, action) {
   }
 }
 
-export default profile
+const reducer = combineReducers({ profile })
+
+export default reducer
+
+// export default profile

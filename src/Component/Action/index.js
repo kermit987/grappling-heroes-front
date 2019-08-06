@@ -1,4 +1,6 @@
 export function UPDATE_NAME(newName) {
+  console.log('Dans update name')
+  alert('Dans update name')
   return {
     type: 'UPDATE_NAME',
     payload: newName
