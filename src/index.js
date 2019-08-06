@@ -5,11 +5,11 @@ import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { Provider } from 'react-redux'
-import { stores } from './stores/'
+import { Store } from 'Component/Store/index'
 
 install()
 ReactDOM.render(
-  <Provider stores={stores}>
+  <Provider store={Store}>
     <App />
   </Provider>,
   document.getElementById('root')

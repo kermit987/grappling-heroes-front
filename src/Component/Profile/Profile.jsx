@@ -4,9 +4,7 @@ import axios from 'axios'
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 
-import { updateProfile } from '../../actions/'
-
-export default class Profile extends Component {
+class Profile extends Component {
   state = {
     name: '',
     lastname: '',
@@ -124,12 +122,9 @@ export default class Profile extends Component {
 
 const mapStateToProps = state => {
   return {
-    updateProfile: state.updateProfile
+    name: state.name,
+    lastname: state.lastname
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ exampleAction }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps)(Profile)
