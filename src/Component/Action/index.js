@@ -1,43 +1,8 @@
-export function UPDATE_NAME(newName) {
-  console.log('Dans update name')
-  alert('Dans update name')
-  return {
-    type: 'UPDATE_NAME',
-    payload: newName
-  }
-}
-
-export function UPDATE_LASTNAME(newLastname) {
-  return {
-    type: 'UPDATE_LASTNAME',
-    payload: newLastname
-  }
-}
-
-export function UPDATE_BIRTH(newBirth) {
-  return {
-    type: 'UPDATE_BIRTH',
-    payload: newBirth
-  }
-}
-
-export function UPDATE_WEIGHT(newWeight) {
-  return {
-    type: 'UPDATE_WEIGHT',
-    payload: newWeight
-  }
-}
-
-export function UPDATE_BELT(newBelt) {
-  return {
-    type: 'UPDATE_BELT',
-    payload: newBelt
-  }
-}
-
-export function UPDATE_STRIPE(newStripe) {
-  return {
-    type: 'UPDATE_STRIPE',
-    payload: newStripe
-  }
-}
+export const FormActions = {
+  UPDATE_NAME: 'UPDATE_NAME',
+  UPDATE_LASTNAME: 'UPDATE_LASTNAME',
+  UPDATE_BIRTH: 'UPDATE_BIRTH',
+  UPDATE_WEIGHT: 'UPDATE_WEIGHT',
+  UPDATE_BELT: 'UPDATE_BELT',
+  UPDATE_STRIPE: 'UPDATE_STRIPE'
+};

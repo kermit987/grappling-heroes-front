@@ -1,4 +1,4 @@
-import React, { component } from 'react';
+import React from 'react';
 
 export default class Diet extends React.Component {
   render() {

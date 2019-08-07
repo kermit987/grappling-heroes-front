@@ -1,53 +1,46 @@
-import React, { Component } from 'react'
-import TextField from '@material-ui/core/TextField'
-import axios from 'axios'
-import Button from '@material-ui/core/Button'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField';
+import axios from 'axios';
+import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
+import { FormActions } from 'Component/Action';
 
 class Profile extends Component {
-  state = {
-    name: '',
-    lastname: '',
-    birth: '',
-    weight: '',
-    belt: '',
-    stripe: ''
-  }
-
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value })
-  }
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   handleClick = async () => {
     try {
-      const update = this.state
-      console.log('inside the handleClick')
+      const update = this.state;
       axios.post(
         'https://floating-hamlet-32385.herokuapp.com/profile',
-        // 'http://localhost:3002/profile',
         update,
         {
           headers: {
             'Content-Type': 'application/json'
           }
         }
-      )
+      );
     } catch (e) {
-      console.log('Error Profile component handleClick post axios ', e)
+      console.log('Error Profile component handleClick post axios ', e);
     }
-  }
+  };
 
   async componentDidMount() {
     try {
       const result = await axios.get(
         'https://floating-hamlet-32385.herokuapp.com/profile'
-        // 'http://localhost:3002/profile'
-      )
-
-      for (let key in result.data) this.setState({ [key]: result.data[key] })
-      this.props.updateName('EPITECH')
+      );
+      const payload = result.data;
+      this.props.updateName(payload['name']);
+      this.props.updateLastname(payload['lastname']);
+      this.props.updateBirth(payload['birth']);
+      this.props.updateWeight(payload['weight']);
+      this.props.updateBelt(payload['belt']);
+      this.props.updateStripe(payload['stripe']);
     } catch (e) {
-      console.log('Error Profile component ', e)
+      console.log('Error Profile component ', e);
     }
   }
 
@@ -55,86 +48,101 @@ class Profile extends Component {
     return (
       <div>
         <TextField
-          name='name'
-          id='outlined-name'
-          label='Name'
-          value={this.state.name}
+          name="name"
+          id="outlined-name"
+          label="Name"
+          value={this.props.name}
           onChange={e => this.handleChange(e)}
-          margin='normal'
-          variant='outlined'
+          margin="normal"
+          variant="outlined"
         />
         <br />
         <TextField
-          name='lastname'
-          id='outlined-name'
-          label='Lastname'
-          value={this.state.lastname}
+          name="lastname"
+          id="outlined-name"
+          label="Lastname"
+          value={this.props.lastname}
           onChange={e => this.handleChange(e)}
-          margin='normal'
-          variant='outlined'
+          margin="normal"
+          variant="outlined"
         />
         <br />
         <TextField
-          name='birth'
-          id='outlined-name'
-          label='Birth'
-          value={this.state.birth}
+          name="birth"
+          id="outlined-name"
+          label="Birth"
+          value={this.props.birth}
           onChange={e => this.handleChange(e)}
-          margin='normal'
-          variant='outlined'
+          margin="normal"
+          variant="outlined"
         />
         <br />
         <TextField
-          name='weight'
-          id='outlined-name'
-          label='Weight'
-          value={this.state.weight}
+          name="weight"
+          id="outlined-name"
+          label="Weight"
+          value={this.props.weight}
           onChange={e => this.handleChange(e)}
-          margin='normal'
-          variant='outlined'
+          margin="normal"
+          variant="outlined"
         />
         <br />
         <TextField
-          name='belt'
-          id='outlined-name'
-          label='Belt'
-          value={this.state.belt}
+          name="belt"
+          id="outlined-name"
+          label="Belt"
+          value={this.props.belt}
           onChange={e => this.handleChange(e)}
-          margin='normal'
-          variant='outlined'
+          margin="normal"
+          variant="outlined"
         />
         <br />
         <TextField
-          name='stripe'
-          id='outlined-name'
-          label='Stripe'
-          value={this.state.stripe}
+          name="stripe"
+          id="outlined-name"
+          label="Stripe"
+          value={this.props.stripe}
           onChange={e => this.handleChange(e)}
-          margin='normal'
-          variant='outlined'
+          margin="normal"
+          variant="outlined"
         />
-        <Button variant='contained' color='primary' onClick={this.handleClick}>
+        <Button variant="contained" color="primary" onClick={this.handleClick}>
           Save
         </Button>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
     name: state.name,
-    lastname: state.lastname
-  }
-}
+    lastname: state.lastname,
+    birth: state.birth,
+    weight: state.weight,
+    belt: state.belt,
+    stripe: state.stripe
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateName: newName => dispatch({ type: 'UPDATE_NAME', payload: newName })
-  }
-}
+    updateName: name =>
+      dispatch({ type: FormActions.UPDATE_NAME, payload: name }),
+    updateLastname: lastname =>
+      dispatch({ type: FormActions.UPDATE_LASTNAME, payload: lastname }),
+    updateBirth: birth =>
+      dispatch({ type: FormActions.UPDATE_BIRTH, payload: birth }),
+    updateWeight: weight =>
+      dispatch({ type: FormActions.UPDATE_WEIGHT, payload: weight }),
+    updateBelt: belt =>
+      dispatch({ type: FormActions.UPDATE_BELT, payload: belt }),
+    updateStripe: stripe =>
+      dispatch({ type: FormActions.UPDATE_STRIPE, payload: stripe })
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Profile)
+)(Profile);

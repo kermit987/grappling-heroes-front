@@ -21,6 +21,7 @@ export default class ListFighter extends Component {
       console.log('before the map');
       this.state.fighter.map(key => {
         console.log('value of key ', key);
+        return key;
       });
       console.log('after the map');
     } catch (e) {

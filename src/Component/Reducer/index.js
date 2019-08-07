@@ -1,12 +1,5 @@
-import { combineReducers } from 'redux'
-import {
-  UPDATE_NAME,
-  UPDATE_LASTNAME,
-  UPDATE_BIRTH,
-  UPDATE_WEIGHT,
-  UPDATE_BELT,
-  UPDATE_STRIPE
-} from 'Component/Action'
+// import { combineReducers } from 'redux';
+import { FormActions } from 'Component/Action';
 
 const initialState = {
   name: '',
@@ -15,51 +8,49 @@ const initialState = {
   weight: '',
   belt: '',
   stripe: ''
-}
+};
 
 function profile(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_NAME:
+    case FormActions.UPDATE_NAME:
       return {
         ...state,
         name: action.payload
-      }
-    case UPDATE_LASTNAME:
+      };
+    case FormActions.UPDATE_LASTNAME:
       return {
         ...state,
         lastname: action.payload
-      }
-    case UPDATE_BIRTH:
+      };
+    case FormActions.UPDATE_BIRTH:
       return {
         ...state,
         birth: action.payload
-      }
-
-    case UPDATE_WEIGHT:
+      };
+    case FormActions.UPDATE_WEIGHT:
+      console.log('value of action payload ', typeof action.payload);
       return {
         ...state,
         weight: action.payload
-      }
-
-    case UPDATE_BELT:
+      };
+    case FormActions.UPDATE_BELT:
       return {
         ...state,
         belt: action.payload
-      }
+      };
 
-    case UPDATE_STRIPE:
+    case FormActions.UPDATE_STRIPE:
       return {
         ...state,
         stripe: action.payload
-      }
-
+      };
     default:
-      return state
+      return state;
   }
 }
 
-const reducer = combineReducers({ profile })
+// const reducer = combineReducers({ profile });
 
-export default reducer
+// export default reducer;
 
-// export default profile
+export default profile;
