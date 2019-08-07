@@ -6,16 +6,16 @@ import { connect } from 'react-redux';
 import { FormActions } from 'Component/Action';
 
 class Profile extends Component {
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange = (key, event) => {
+    this.props[`update${key}`](event.target.value);
   };
 
   handleClick = async () => {
     try {
-      const update = this.state;
+      const { name, weight, birth, lastname } = this.props;
       axios.post(
         'https://floating-hamlet-32385.herokuapp.com/profile',
-        update,
+        { name, weight, birth, lastname },
         {
           headers: {
             'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ class Profile extends Component {
           id="outlined-name"
           label="Name"
           value={this.props.name}
-          onChange={e => this.handleChange(e)}
+          onChange={e => this.handleChange('Name', e)}
           margin="normal"
           variant="outlined"
         />
@@ -62,7 +62,7 @@ class Profile extends Component {
           id="outlined-name"
           label="Lastname"
           value={this.props.lastname}
-          onChange={e => this.handleChange(e)}
+          onChange={e => this.handleChange('Lastname', e)}
           margin="normal"
           variant="outlined"
         />
@@ -72,7 +72,7 @@ class Profile extends Component {
           id="outlined-name"
           label="Birth"
           value={this.props.birth}
-          onChange={e => this.handleChange(e)}
+          onChange={e => this.handleChange('Birth', e)}
           margin="normal"
           variant="outlined"
         />
@@ -82,7 +82,7 @@ class Profile extends Component {
           id="outlined-name"
           label="Weight"
           value={this.props.weight}
-          onChange={e => this.handleChange(e)}
+          onChange={e => this.handleChange('Weight', e)}
           margin="normal"
           variant="outlined"
         />

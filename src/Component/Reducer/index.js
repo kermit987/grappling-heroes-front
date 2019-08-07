@@ -28,7 +28,6 @@ function profile(state = initialState, action) {
         birth: action.payload
       };
     case FormActions.UPDATE_WEIGHT:
-      console.log('value of action payload ', typeof action.payload);
       return {
         ...state,
         weight: action.payload
